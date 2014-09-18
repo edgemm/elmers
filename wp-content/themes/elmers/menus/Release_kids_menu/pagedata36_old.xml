@@ -1,0 +1,171 @@
+﻿<PageflipDataSet>
+	<Settings PageWidth="400"
+			  PageHeight="513"
+			  AutoSize="true"
+			  
+			  StartPage="1"
+			  AlwaysOpened="false"
+			  
+			  CenterSinglePage="true"
+
+			  RightToLeft="false"
+			  VerticalMode="false"
+			  OffsetX="0"
+			  OffsetY="0"
+			  
+			  PageScale="true"
+			  MaxScale="200"
+			  BaseStageWidth="805"
+			  BaseStageHeight="651"
+			  
+			  Hardcover="true"
+			  Hardpage="false"
+			  EmbossedPages="false"
+			  
+			  LargeCover="false"
+			  LargeCoverTopOversize="0"
+			  LargeCoverSideOversize="0"
+			  
+			  BackContent="true"
+			  BackFile="pages/demo_backshadow.swf"
+			  BackActive="true"
+			  BackAlwaysVisible="true"
+			  BackContentFixed="false"
+			  
+			  BackgroundColor="0xFFFFFF"
+			  buttonColor="0x333333"
+			  buttonOverColor="0xF0B400"
+			  buttonPressColor="0x333333"
+			  
+			  startAutoFlip="false"
+			  AutoFlipDefaultInterval="5"
+			  AutoFlipLooping="true"
+			  			  
+			  TransparencyEnabled="true"
+			  TransparencyActivePage="true"
+			  
+			  FullScreenEnabled="true"
+			  PDFlink="pages/pageflipcover.pdf"
+			  ButtonHelp="true"
+			  
+			  ZoomOnPageClick="true"
+			  LightBoxZoom="true"
+			  ZoomFollowSpeed="5"
+			  ZoomActivePage="true"
+			  DragZoom="false"
+			  ZoomToTop="true"
+			  ZoomHotspot="true"
+			  
+			  ThumbnailsEnabled="true"		  
+			  LiveThumbnails="true"
+			  ThumbnailsActivePages="true"
+			  ThumbnailWidth="73"
+			  ThumbnailHeight="120"
+			  ThumbnailPadding="20"
+			  ThumbnailBorderWidth="1"
+			  ThumbnailBorderColor="0x333333"
+			  ThumbnailBorderHoverColor="0x333333"			  
+			  			  
+			  HcoverAngle="-30" 
+			  ClickArea="64"
+			  AutoFlipArea="56"
+			  GotoPageSpeed="5"
+			  MousePursuitSpeed="5"
+			  OnReleaseSpeed="5"
+			  TearDistance="80"
+			  FlippingEnabled="true"
+			  
+			  PageCache="5"
+			  UnloadPages="false"
+			  PageLoaderBackColor="0x333333"
+		  	  PageLoaderColor="0x666666"
+		  	  
+			  MouseControl="true">
+			  
+			  <Sounds Enabled="true"
+			  		  EffectVolume="10"
+			  		  Start="pf1.mp3"
+					  End="pf2.mp3"
+					  TearOff="pf3.mp3" />
+					  
+	</Settings>
+	
+	<PageOrder>
+		<PageData PageFile="pages/menu_01.swf"
+				  LargeFile="pages/menu_01.swf" 
+				  ThumbnailFile="pages/thumbnails/menu_01.png"
+				  PageName="menu_01" />
+		
+		<PageData PageFile="pages/menu_02.swf"
+				  LargeFile="pages/menu_02.swf" 
+				  ThumbnailFile="pages/thumbnails/menu_02.png"
+				  PageName="menu_02" />
+				  
+		<PageData PageFile="pages/menu_03.swf"
+				  LargeFile="pages/menu_03.swf"
+				  ThumbnailFile="pages/thumbnails/menu_03.png"
+				  PageName="menu_03" />
+				   
+		<PageData PageFile="pages/menu_04.swf"
+				  LargeFile="pages/menu_04.swf"
+				  ThumbnailFile="pages/thumbnails/menu_04.png"
+				  PageName="menu_04" />
+	</PageOrder>
+	
+	<TableOfContents>
+		<Title Name="Table of Contents:" />
+		<Link Name="Features" TargetLabel="Features" Skip="true" />
+		<Link Name="New Features" TargetLabel="NewFeatures" Skip="true" />
+		<Link Name="Transparency" TargetLabel="Transparency" Skip="true" />
+		<Link Name="Page Spread Anim" TargetLabel="SpreadAnim" Skip="true" />
+		<Link Name="Sound Demo" TargetLabel="SoundDemo" Skip="true" />
+		<Link Name="Video Demo" TargetLabel="VideoDemo" Skip="true" />
+		<Link Name="Back Cover" TargetLabel="BackCover" Skip="true" />
+		<Link Name="Thumbnails" TargetPage="9999" />
+	</TableOfContents>
+
+	<TableOfContents>
+		<Title Name="Table of Contents 2:" />
+		<Link Name="Sound Demo" TargetLabel="SoundDemo" Skip="true" />
+		<Link Name="Video Demo" TargetLabel="VideoDemo" Skip="true" />
+		<Link Name="Thumbnails" TargetPage="9999" />
+	</TableOfContents>
+
+	<TableOfContents>
+		<Title Name="Table of Contents 3:" />
+		<Link Name="Features" TargetLabel="Features" Skip="true" />
+		<Link Name="New Features" TargetLabel="NewFeatures" Skip="true" />
+		<Link Name="Transparency" TargetLabel="Transparency" Skip="true" />
+		<Link Name="Page Spread Anim" TargetLabel="SpreadAnim" Skip="true" />
+	</TableOfContents>
+
+
+
+	<Language SoundLoadingText="Loading sounds #"
+			  ZoomLoadingText="Loading zoom page #"
+			  PrintLoadingText="Loading print page #"
+				
+			  PagerText="Page #"	  
+			  ZoomPagerText="Zoom page #"
+			  ThumbnailPagerSingle="Thumbnails"
+			  ThumbnailPager="Thumbs #"
+			  ThumbnailPreviousPageButtonHelp="Previous page"
+			  ThumbnailNextPageButtonHelp="Next page"
+	
+			  PreviousPageButtonHelp="Flip backward 1 page"
+			  NextPageButtonHelp="Flip forward 1 page"
+			  ZoomLeftButtonHelp="Zoom left side page"
+			  ZoomRightButtonHelp="Zoom right side page"
+			  PrintLeftButtonHelp="Print left side page"
+			  PrintRightButtonHelp="Print right side page"
+			  ThumbnailButtonHelp="Thumbnail view"
+			  PDFButtonHelp="Download this book in pdf format"
+			  StartAutoFlipHelp="Start auto flipping"
+			  StopAutoFlipHelp="Stop auto flipping"
+			  FullScreenOnButtonHelp="Exit fullscreen mode"
+			  FullScreenOffButtonHelp="Switch to fullscreen mode"
+			  CopyrightText="© 2011 Elmer's Restaurants, Inc."
+			  >
+	</Language>
+
+</PageflipDataSet>
