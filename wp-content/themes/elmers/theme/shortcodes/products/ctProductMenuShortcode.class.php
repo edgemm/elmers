@@ -76,10 +76,13 @@ class ctProductMenuShortcode extends ctShortcodeQueryable {
 			$counter++;
 		}
 
-		// add nutrition button - gfh
-		$filtersHtml .= '<li class="nofilter"><a href="/wp-content/uploads/2014/07/elmers-nutrition-guide.pdf" target="_blank">Nutrition</a></li>';
-		// add print button - gfh
-		$filtersHtml .= '<li class="printable nofilter"><a href="/wp-content/uploads/2014/06/elmers-menu-printable.pdf" target="_blank">Print</a></li>';
+		// add nutrition button
+		$page_id = get_queried_object_id();
+		$menu_nutri = get_field( 'elmers_menu_nutritional', $page_id );
+		if ( !empty( $menu_nutri ) ) $filtersHtml .= '<li class="nofilter"><a href="' . $menu_nutri . '" target="_blank">Nutrition</a></li>';
+		// add print button
+		$menu_print = get_field( 'elmers_menu_printable', $page_id );
+		if ( !empty( $menu_print ) ) $filtersHtml .= '<li class="printable nofilter"><a href="' . $menu_print . '" target="_blank">Print</a></li>';
 
 		$filtersHtml .= '</ul></div>';
 		$tabsHtml .= '</div>';
