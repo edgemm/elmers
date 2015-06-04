@@ -191,10 +191,16 @@ li.widget {
 	left: 0;
 }
 
-#top .navbar .navbar-inner .nav > li { padding: 0; }
+#top .navbar .navbar-inner .nav > li {
+	margin-left: 23px;
+	padding: 0;
+}
+#top .navbar .navbar-inner .nav > li:first-child {
+	margin-left: 0;
+}
 
 #top .navbar > .navbar-inner .nav > li > a {
-	padding: 0 18px;
+	padding: 0;
 	display: block;
 	float: left;
 	font-family: 'Source Sans Pro', sans-serif;
@@ -898,7 +904,7 @@ header.title > h2 {
 }
 
 
-/* --- MENU - GFH 5-2-14 --- */
+/* --- MENU --- */
 
 .menu .menu-sliders-container {
 	min-height: 80px;
@@ -1080,6 +1086,28 @@ body.contact #content { overflow-y: visible; }
 	margin-left: 0;
 	padding-left: 0;
 	border: none;
+}
+
+
+/* ----- GIFT CARDS ----- */
+
+.cols {
+	width: 100%;
+	padding: 24px 0;
+}
+.col-300 {
+	width: 300px;
+	margin: 0 0 20px 20px;
+	float: left;
+	text-align: center;
+}
+.col-300:nth-child(3n + 1) {
+	margin-left: 0;
+}
+
+.disclaimer {
+	font-size: 10px;
+	text-align: center;
 }
 
 
@@ -1276,6 +1304,7 @@ div#map_sidebar {
 #top .navbar .navbar-inner .nav > li.menu-locations > a { background-position: center -200px !important; }
 #top .navbar .navbar-inner .nav > li.menu-about-us > a { background-position: center -300px !important; }
 #top .navbar .navbar-inner .nav > li.menu-contact > a { background-position: center -400px !important; }
+#top .navbar .navbar-inner .nav > li.menu-gift-cards > a { background-position: center -500px !important; }
 
 #top .navbar .navbar-inner .nav > li.menu-home > a:hover,
 #top .navbar .navbar-inner .nav > li.menu-home.active > a,
@@ -1302,6 +1331,11 @@ div#map_sidebar {
 #top .navbar .navbar-inner .nav > li.menu-contact.open > a {
 	background-position: center -450px !important;
 }
+#top .navbar .navbar-inner .nav > li.menu-gift-cards > a:hover,
+#top .navbar .navbar-inner .nav > li.menu-gift-cards.active > a,
+#top .navbar .navbar-inner .nav > li.menu-gift-cards.open > a {
+	background-position: center -550px !important;
+}
 
 .dropdown > a.dropdown-toggle:after {
 	width: 9px;
@@ -1309,7 +1343,7 @@ div#map_sidebar {
 	display: block;
 	position: absolute;
 	bottom: -5px;
-	right: 18px;
+	right: 2px;
 	content: ' ';
 	background-position: 0 -600px;
 }
@@ -1338,15 +1372,6 @@ div#map_sidebar {
 
 
 @media (min-width: 768px) {
-
-/*#content { padding-bottom: 79px; }
-
-#footer {
-	padding-bottom: 0;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-}*/
 	
 .footer-nav-bubble {
 	padding-bottom: 13px;
@@ -1600,14 +1625,17 @@ div#map_sidebar {
 	float: left;
 }
 
+
+.col-300 {
+	width: 50%;
+	margin-left: 0;
+}
+
+
 #searchForm { width: 100%; }
 #address_search { height: auto; }
 #radius_in_submit { width: auto !important; }
 #radius_in_submit #addressSubmit.slp_ui_button { margin-bottom: 10px; }
-
-/*.menu .menu-sliders-container {
-	height: 270px;
-}*/
 
 .menu .row-fluid .span6 {
 	width: 48%;
@@ -1772,6 +1800,16 @@ body { overflow-x: hidden; }
 #footer .footer-slogan { top: -105px; }
 #footer .footer-copyright { top: -30px; }
 
+
+}
+
+
+@media (max-width: 599px) {
+
+.col-300 {
+	width: 100%;
+	float: none;
+}
 
 }
 
