@@ -1,9 +1,9 @@
 <?php
 
-// allow shortcoes in widgets
+// allow shortcodes in widgets
 add_filter('widget_text', 'do_shortcode');
 
-// add extra widget areas - gfh
+// add extra widget areas
 add_action( 'after_setup_theme', 'elmers_setup_theme' );
 if ( ! function_exists( 'elmers_setup_theme' ) ){
 	function elmers_setup_theme(){
@@ -168,7 +168,8 @@ function get_menu_slider() {
 			$slides = '[nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_cub_cake.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_bigfoot_breakfast.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_cheeseburger_sliders.jpg"][/nivo_slider_item]';
 			break;
 		case "seasonal":
-			$slides = '[nivo_slider_item imgsrc="/wp-content/uploads/2014/09/FP5-2014_MarionBerryFrenchToast.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="/wp-content/uploads/2014/09/FP5-2014_BagelBenedict.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="/wp-content/uploads/2014/09/FP5-2014_BlueCheeseBurger.jpg"][/nivo_slider_item]';
+			//$slides = '[nivo_slider_item imgsrc="http://eatatelmers.com/wp-content/uploads/2014/04/front_img01.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="http://eatatelmers.com/wp-content/uploads/2014/04/front_img02.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="http://eatatelmers.com/wp-content/uploads/2014/04/front_img03.jpg"][/nivo_slider_item]';
+			$slides = '[nivo_slider_item imgsrc="http://eatatelmers.com/wp-content/uploads/2015/06/FP3-2015_MenuFeatures-BlueberryBananaCrepes.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="http://eatatelmers.com/wp-content/uploads/2015/06/FP3-2015_MenuFeatures-ClubhouseOmelet.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="http://eatatelmers.com/wp-content/uploads/2015/06/FP3-2015_MenuFeatures-ClamstripBasket.jpg"][/nivo_slider_item]';
 			break;
 		case "beverages":
 			$slides = '[nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_coffee.jpg"][/nivo_slider_item]';

@@ -90,7 +90,13 @@
 					<a class="homePost-navDown" href="javascript:void(0)"><i class="icon-angle-down"></i></a>
 				</div>
 				<div class="span4">
-					<?php if ( dynamic_sidebar('hometopright') ) : else : endif; ?>
+					<?php //if ( dynamic_sidebar('hometopright') ) : else : endif; ?>
+					<li id="youtubechannelgallery_widget-2" class="widget-1 widget-first widget youtubechannelgallery ytccf">
+						<h3 class="widgettitle">
+							<a class="sm-link" href="https://www.youtube.com/user/ElmersRestaurant" target="_blank">Latest Videos</a>
+						</h3>
+						<iframe width="270" height="152" src="https://www.youtube.com/embed/o_5bUmfu9T0?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+					</li>
 				</div>
 			</div>
 
