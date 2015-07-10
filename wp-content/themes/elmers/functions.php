@@ -1,5 +1,97 @@
 <?php
 
+/*------------------------------------*\
+	Custom Post Types
+\*------------------------------------*/
+
+add_action('init', 'create_post_types'); // Add Custom Post Type
+
+function create_post_types() {
+
+	// home sliders
+	register_post_type( 'slide',
+		array(
+		'labels' => array(
+			'name'			=> _x( 'Slides', 'slide' ),
+			'singular_name'		=> _x( 'Slide', 'slide' ),
+			'add_new'		=> _x( 'Add New Slide', 'slide' ),
+			'add_new_item'		=> _x( 'Add New Slide', 'slide' ),
+			'edit_item'		=> _x( 'Edit Slide', 'slide' ),
+			'new_item'		=> _x( 'New Slide', 'slide' ),
+			'view_item'		=> _x( 'View Slide', 'slide' ),
+			'search_items'		=> _x( 'Search Slides', 'slide' ),
+			'not_found'		=> _x( 'No slides found', 'slide' ),
+			'not_found_in_trash'	=> _x( 'No slides found in Trash', 'slide' ),
+			'parent_item_colon'	=> _x( 'Parent Slide:', 'slide' ),
+			'menu_name'		=> _x( 'Slides', 'slide' ),
+		),
+		'hierarchical'		=> false,
+		'supports'		=> array(
+			'title',
+			'editor',
+			'thumbnail',
+			'custom-fields'
+		),
+		'public'		=> true,
+		'show_ui'		=> true,
+		'menu_position'		=> 20,
+		'menu_icon'		=> 'dashicons-images-alt',
+		'show_in_nav_menus'	=> false,
+		'publicly_queryable'	=> false,
+		'exclude_from_search'	=> true,
+		'has_archive'		=> false,
+		'query_var'		=> true,
+		'can_export'		=> true,
+		'rewrite'		=> true,
+		'capability_type'	=> 'post'
+	));
+
+}
+
+/*------------------------------------*\
+	Custom Taxonomies
+\*------------------------------------*/
+
+add_action('init', 'create_taxonomies'); // Add Custom Taxonomies
+
+function create_taxonomies() {
+
+	// slide categories
+	register_taxonomy( 'slide_category', array( 'slide' ),
+		array(
+		'labels'		=> array(
+			'name'				=> _x( 'Slide Categories', 'Taxonomy General Name', 'text_domain' ),
+			'singular_name'			=> _x( 'Slide Category', 'Taxonomy Singular Name', 'text_domain' ),
+			'menu_name'			=> __( 'Slide Categories', 'text_domain' ),
+			'all_items'			=> __( 'All Slide Items', 'text_domain' ),
+			'parent_item'			=> __( 'Parent Slide Category', 'text_domain' ),
+			'parent_item_colon'		=> __( 'Parent Slide Category:', 'text_domain' ),
+			'new_item_name'			=> __( 'New Slide Category', 'text_domain' ),
+			'add_new_item'			=> __( 'Add New Slide Category', 'text_domain' ),
+			'edit_item'			=> __( 'Edit Slide Category', 'text_domain' ),
+			'update_item'			=> __( 'Update Slide Category', 'text_domain' ),
+			'view_item'			=> __( 'View Slide Category', 'text_domain' ),
+			'separate_items_with_commas'	=> __( 'Separate items with commas', 'text_domain' ),
+			'add_or_remove_items'		=> __( 'Add or remove items', 'text_domain' ),
+			'choose_from_most_used'		=> __( 'Choose from the most used', 'text_domain' ),
+			'popular_items'			=> __( 'Popular Items', 'text_domain' ),
+			'search_items'			=> __( 'Search Items', 'text_domain' ),
+			'not_found'			=> __( 'Not Found', 'text_domain' )
+		),
+		'hierarchical'		=> true,
+		'public'		=> true,
+		'show_ui'		=> true,
+		'show_admin_column'	=> true,
+		'show_in_nav_menus'	=> true,
+		'show_tagcloud'		=> true,
+	));
+
+}
+
+/*------------------------------------*\
+	Widgets
+\*------------------------------------*/
+
 // allow shortcodes in widgets
 add_filter('widget_text', 'do_shortcode');
 
@@ -31,16 +123,17 @@ if ( ! function_exists( 'elmers_setup_theme' ) ){
 add_action( 'after_setup_theme', 'set_thumbnail' );
 function set_thumbnail() {
 	add_image_size('post_elmers', 700, 158, true );
+	add_image_size('menu_slide', 940, 351, true );
 }
 
 function elmers_scripts() {
 	wp_enqueue_script( 'jquery-cookie', get_stylesheet_directory_uri() . '/js/jquery.cookie.js', array(), '1.4.0', false );
 	wp_enqueue_script( 'elmers-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array(), '1.0.0', true );
 
-	// load GA scripts for search tracking - gfh
+	// load GA scripts for search tracking
 	if ( is_page( 3 ) ) wp_enqueue_script( 'location-scripts', get_stylesheet_directory_uri() . '/js/elmers-locations.js', array(), '1.0.0', true );
 	
-	// load masonry onto menu page - gfh
+	// load masonry onto menu page
 	if ( is_page_template( 'page-menu.php' ) ) {
 		wp_enqueue_script( 'jquery-masonry', get_stylesheet_directory_uri() . '/js/jquery.masonry.min.js', array(), '3.1.5', true );
 		wp_enqueue_script( 'jquery-nivo-slider', get_template_directory_uri() . '/assets/libs/jquery.nivo.slider.pack.js', array(), '3.9', true );
@@ -49,7 +142,7 @@ function elmers_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'elmers_scripts' );
 
-// for closing HTML on generated post excerpts - gfh
+// for closing HTML on generated post excerpts
 function closeTags($html) {
 	preg_match_all('#<(?!meta|img|br|hr|input\b)\b([a-z]+)(?: .*)?(?<![/|/ ])>#iU', $html, $result);
 	$openedtags = $result[1];
@@ -150,33 +243,47 @@ function menuFooterMobile() {
 	return wp_nav_menu( $args );
 }
 
-// load menu sliders - gfh
+// load menu sliders
 add_action('wp_ajax_get_menu_slider', 'get_menu_slider');
 add_action('wp_ajax_nopriv_get_menu_slider', 'get_menu_slider');
 
-function get_menu_slider() {
-	$slider_id = $_POST['slider_id'];
+function get_menu_slider( $s ) {
+	$slider_id = ( !empty( $s ) ) ? $s : $_POST['slider_id'];
+	$slides = ""; // string to hold slider shortcodes
 	
-	switch( $slider_id ) {
-		case "breakfast":
-			$slides = '[nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_german_pancake.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_looking_for_sun_omelet.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_yukon_french_toast.jpg"][/nivo_slider_item]';
-			break;
-		case "lunch":
-			$slides = '[nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_prime_rib.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_crab_blt.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_fish_chips.jpg"][/nivo_slider_item]';
-			break;
-		case "kids":
-			$slides = '[nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_cub_cake.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_bigfoot_breakfast.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_cheeseburger_sliders.jpg"][/nivo_slider_item]';
-			break;
-		case "seasonal":
-			//$slides = '[nivo_slider_item imgsrc="http://eatatelmers.com/wp-content/uploads/2014/04/front_img01.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="http://eatatelmers.com/wp-content/uploads/2014/04/front_img02.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="http://eatatelmers.com/wp-content/uploads/2014/04/front_img03.jpg"][/nivo_slider_item]';
-			$slides = '[nivo_slider_item imgsrc="http://eatatelmers.com/wp-content/uploads/2015/06/FP3-2015_MenuFeatures-BlueberryBananaCrepes.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="http://eatatelmers.com/wp-content/uploads/2015/06/FP3-2015_MenuFeatures-ClubhouseOmelet.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="http://eatatelmers.com/wp-content/uploads/2015/06/FP3-2015_MenuFeatures-ClamstripBasket.jpg"][/nivo_slider_item]';
-			break;
-		case "beverages":
-			$slides = '[nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_coffee.jpg"][/nivo_slider_item]';
-			break;
-		default:
-			$slides = "";
-	}
+	$menu_slider_args = array(
+		'post_type'		=> 'slide',
+		'post_status'		=> 'publish',
+		'posts_per_page'	=> -1,
+		'tax_query'		=> array(
+			array(
+				'taxonomy'	=> 'slide_category',
+				'field'		=> 'slug',
+				'terms'		=> $slider_id
+			)
+		),
+		'meta_key'		=> 'slide_order',
+		'orderby'		=> 'meta_value_num',
+		'order'			=> 'ASC'
+	);
+	
+	$menu_slider_query = new WP_Query( $menu_slider_args );
+	
+	if( $menu_slider_query->have_posts() ) :
+	
+		while( $menu_slider_query->have_posts() ) :
+		
+			$menu_slider_query->the_post();
+
+			$slide_thmb_url = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), "menu_slide" );
+			$site_url = get_site_url();
+			$slide_thmb_src = str_replace( $site_url, "", $slide_thmb_url['0'] );
+
+			$slides .= '[nivo_slider_item imgsrc="' . $slide_thmb_src . '"][/nivo_slider_item]';
+	
+		endwhile;
+	
+	endif;
 
 	if( !empty( $slides ) ) {
 		$result = '[nivo_slider effect="fade" pause="5000" ]';
@@ -185,11 +292,28 @@ function get_menu_slider() {
 
 		echo do_shortcode( $result );
 	} else {
-		$result = "nada";
-		echo $result;
+		$result = $slider_id;
+		echo "<!-- the result is: " . $result . " -->";
 	}
+	
+	wp_reset_postdata();
    
-   die();
+	if( empty( $s ) ) die();
 }
+
+//add_action( 'admin_init', 'edge_allow_updates' );
+//function edge_allow_updates() {
+//
+//	// get current user
+//	$user = wp_get_current_user();
+//
+//	// allow adding/updating plugins if users with correct permissions
+//	if( $user && isset( $user->user_login) && 'gavin@edgemm.com' == $user->user_login ) :
+//
+//		define( 'DISALLOW_FILE_MODS', FALSE );
+//
+//	endif;
+//
+//}
 
 ?>

@@ -22,7 +22,7 @@
 			
 			<div class="menu-sliders-container">
 				<div class="menu-slider">
-					<?php echo do_shortcode( '[nivo_slider effect="fade" pause="5000" ][nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_german_pancake.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_looking_for_sun_omelet.jpg"][/nivo_slider_item][nivo_slider_item imgsrc="/wp-content/uploads/2014/05/elmers_menu_yukon_french_toast.jpg"][/nivo_slider_item][/nivo_slider]' ); ?>
+					<?php get_menu_slider( "breakfast" );  ?>
 				</div>
 			</div>
 
