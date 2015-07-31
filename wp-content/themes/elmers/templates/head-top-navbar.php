@@ -7,16 +7,16 @@
 
 					<div class="navbar">
 						<div class="navbar-inner">
-							<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
 							<?php if ($logo = ct_get_option('general_logo')) { ?>
 								<a class="brand" href="<?php echo home_url(); ?>"><img src="<?php echo esc_url($logo) ?>" alt="logo"/></a>
 							<?php } elseif ($plain = ct_get_option('general_logo_html')) { ?>
 								<?php echo $plain ?>
 							<?php };?>
+
+								<label for="nav-expand" class="nav-trigger"><i class="fa fa-bars"></i></label>
+								<input type="radio" name="nav" id="nav-expand" class="nav-toggle" />
+								<label for="nav-recant" class="nav-recant nav-toggle img-replace"></label>
+								<input type="radio" name="nav" id="nav-recant" class="nav-toggle" />
 		
 							<div class="nav-collapse collapse" id="nav-main">
 								<?php if (has_nav_menu('primary_navigation')) {

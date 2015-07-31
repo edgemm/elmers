@@ -27,7 +27,7 @@ Template Name: Left Sidebar Template
 
 			<?php get_template_part('templates/content', 'title'); ?>
 
-			<div class="row-fluid">
+			<div class="row-fluid content-bg">
 				<div class="span3">
 					<?php get_template_part('templates/sidebar'); ?>
 				</div>

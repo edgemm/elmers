@@ -27,7 +27,7 @@ Template Name: Right Sidebar Template
 
 			<?php get_template_part('templates/content', 'title'); ?>
 
-			<div class="row-fluid">
+			<div class="row-fluid content-bg">
 				<div class="span9">
 					<?php get_template_part('templates/content', 'page-custom'); ?>
 				</div>

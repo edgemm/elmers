@@ -127,6 +127,7 @@ function set_thumbnail() {
 }
 
 function elmers_scripts() {
+    
 	wp_enqueue_script( 'jquery-cookie', get_stylesheet_directory_uri() . '/js/jquery.cookie.js', array(), '1.4.0', false );
 	wp_enqueue_script( 'elmers-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array(), '1.0.0', true );
 
@@ -141,6 +142,15 @@ function elmers_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'elmers_scripts' );
+
+// remove parent theme scripts
+function remove_scripts() {
+    if( is_page( 236 ) ) :
+        wp_deregister_script( 'ct_bootstrap_select' );
+        //wp_dequeue_script( 'ct_bootstrap_select' );
+    endif;
+}
+add_action( 'wp_print_scripts', 'remove_scripts', 100 );
 
 // for closing HTML on generated post excerpts
 function closeTags($html) {
@@ -299,6 +309,14 @@ function get_menu_slider( $s ) {
 	wp_reset_postdata();
    
 	if( empty( $s ) ) die();
+}
+
+// get ID of YouTube video for specific post
+function get_youtube_id( $p ) {
+   $f_video_url = get_post_meta($p,'youtube_video_url',true);
+   parse_str( parse_url( $f_video_url, PHP_URL_QUERY ), $f_video );
+   
+   return $f_video['v'];
 }
 
 //add_action( 'admin_init', 'edge_allow_updates' );
