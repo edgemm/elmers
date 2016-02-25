@@ -129,8 +129,8 @@ function set_thumbnail() {
 function elmers_scripts() {
 	
 	// fancybox
-    wp_register_style( 'fancybox', get_stylesheet_directory_uri() . '/fancybox/jquery.fancybox.css', array(), '2.1.5', 'all');
-    wp_enqueue_style( 'fancybox' );
+	wp_register_style( 'fancybox', get_stylesheet_directory_uri() . '/fancybox/jquery.fancybox.css', array(), '2.1.5', 'all');
+	wp_enqueue_style( 'fancybox' );
 	wp_enqueue_script( 'jquery-fancybox', get_stylesheet_directory_uri() . '/fancybox/jquery.fancybox.pack.js', array(), '2.1.5', true );
     
 	wp_enqueue_script( 'jquery-cookie', get_stylesheet_directory_uri() . '/js/jquery.cookie.js', array(), '1.4.0', false );
@@ -284,7 +284,7 @@ function get_menu_slider( $s ) {
 		'orderby'		=> 'meta_value_num',
 		'order'			=> 'ASC'
 	);
-	
+
 	$menu_slider_query = new WP_Query( $menu_slider_args );
 	
 	if( $menu_slider_query->have_posts() ) :
@@ -373,7 +373,7 @@ function wpcf7_add_references( $WPCF7_ContactForm ) {
 	$id = $WPCF7_ContactForm->id();
 		$mail = $WPCF7_ContactForm->prop( 'mail' );
 	
-	if( $submission && $id == '1125' ) :
+	if( $submission && $id == '1129' ) :
 
 		$data = $submission->get_posted_data();
 
